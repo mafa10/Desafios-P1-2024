@@ -8,19 +8,24 @@ def agregar_libro():
     #Pensar mejor la validacion de los campos.
     #Hacer una funcion aparte para validar cada campo.
     titulo = input("Ingrese el Titulo del Libro:").strip().title()
-    autor = validar_autor(input("Ingrese el Nombre del Autor del Libro:"))
-
+    autor = validar_autor(input("Ingrese el Nombre del Autor del Libro:").strip())
     editorial = input("Ingrese la Editorial del Libro:").title()
-    anio = input("Ingrese el Año de Publicación del Libro:")
+    anio = validar_anio(input("Ingrese el Año de Publicación del Libro:"))
     cantPag = input("Ingrese la Cantidad de Páginas del Libro:")
 
-    return autor.title()
+    return autor.title(), anio.strip()
 
 def validar_autor(a):
     while a.replace(" ", "").isalpha() == False:
         print("El Nombre del Autor no es válido")
         a = input("Ingrese el Nombre del Autor del Libro:")
     return a
+
+def validar_anio(y):
+    while y.replace(" ", "").isdecimal() == False:
+        print("El Año ingresado no es válido")
+        y = input("Ingrese el Año de Publicación del Libro:") 
+    return y
 
 def eliminar_libro():
     pass
@@ -33,5 +38,6 @@ def imprimir_libros():
 
 #Programa Principal
 
-#aut = agregar_libro()
-#print(aut)
+aut,ani = agregar_libro()
+print(aut)
+print(ani)
