@@ -11,9 +11,9 @@ def agregar_libro():
     autor = validar_autor(input("Ingrese el Nombre del Autor del Libro:"))
     editorial = input("Ingrese la Editorial del Libro:").title()
     anio = validar_anio(input("Ingrese el Año de Publicación del Libro:").strip())
-    cantPag = input("Ingrese la Cantidad de Páginas del Libro:")
+    cantPag = validar_cantPag(input("Ingrese la Cantidad de Páginas del Libro:").strip())
 
-    return autor.title().strip(), anio
+    return autor.title().strip(), anio, cantPag
 
 def validar_autor(a):
     while a.replace(" ", "").isalpha() == False:
@@ -28,7 +28,10 @@ def validar_anio(y):
     return y
 
 def validar_cantPag(p):
-    pass
+    while p.isdecimal() == False:
+        print("La cantidad de páginas ingresada no es válida")
+        p = input("Ingrese la Cantidad de Páginas del Libro:").strip()
+    return p
 
 def eliminar_libro():
     pass
@@ -41,6 +44,7 @@ def imprimir_libros():
 
 #Programa Principal
 
-aut,ani = agregar_libro()
+aut,ani,pag = agregar_libro()
 print(aut)
 print(ani)
+print(pag)
