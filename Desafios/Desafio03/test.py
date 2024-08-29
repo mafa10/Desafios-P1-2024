@@ -10,5 +10,8 @@ def validar_autor(a):
         a = input("Ingrese el Nombre del Autor del Libro:")
     return a
 
-autor = a_l()
-print(autor)
+#autor = a_l()
+#print(autor)
+
+y = input("Ingrese algo:").strip()
+print(y)
