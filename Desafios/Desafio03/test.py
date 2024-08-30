@@ -12,6 +12,10 @@ def validar_autor(a):
 
 #autor = a_l()
 #print(autor)
-
+"""
 y = input("Ingrese algo:").strip()
 print(y)
+"""
+id=input("Ingrese un Id:")
+if id.isdigit() == False:
+    print("el id ingresado no es válido")

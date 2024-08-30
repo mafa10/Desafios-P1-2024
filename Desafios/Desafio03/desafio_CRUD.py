@@ -4,7 +4,7 @@
 
 """La idea sería pedir los datos del libro por teclado, e ir cargando libro a libro, después, mostrarlos por pantalla en una matriz, poder agregar más, modificar los datos de un libro y poder eliminar un libro."""
 
-def agregar_libro():
+def agregar_libro(lib):
     #Pensar mejor la validacion de los campos.
     #Hacer una funcion aparte para validar cada campo.
     titulo = input("Ingrese el Titulo del Libro:").strip().title()
@@ -12,8 +12,9 @@ def agregar_libro():
     editorial = input("Ingrese la Editorial del Libro:").title()
     anio = validar_anio(input("Ingrese el Año de Publicación del Libro:").strip())
     cantPag = validar_cantPag(input("Ingrese la Cantidad de Páginas del Libro:").strip())
-
-    return autor.title().strip(), anio, cantPag
+    libro = [titulo, autor.title().strip(), editorial, anio, cantPag]
+    lib.append(libro)
+    return lib
 
 def validar_autor(a):
     while a.replace(" ", "").isalpha() == False:
@@ -42,9 +43,24 @@ def modificar_libro():
 def imprimir_libros():
     pass
 
-#Programa Principal
+def menu():
+    """
+    Esta funciona albergará un diccionario con el formato crud.
+    Es decir, aca el cliente podria elegir que hacer si, agregar un libro o elim o mod.
+    """
+    m ={
 
+    }
+
+    pass
+#Programa Principal
+"""
 aut,ani,pag = agregar_libro()
 print(aut)
 print(ani)
 print(pag)
+"""
+lista = [["algebra lineal","jorge draxler","santaolalla","2924","345"]]
+libros = agregar_libro(lista)
+for libro in libros:
+    print(f"Título: {libro[0]}, Autor: {libro[1]}, Editorial: {libro[2]}, Año: {libro[3]}, Páginas: {libro[4]}")
