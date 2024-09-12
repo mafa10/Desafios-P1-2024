@@ -8,17 +8,56 @@ def val_email(e):
         e = input("Ingrese un Email: ")
     print("El email ingresado es válido")
 
-def val_num_tel():
+def val_num_tel(tel):
+    """
+    Verificacion RegEx:
+    # ^\+?(\d{1,3})?\s?-?(\d{2,4})\s?-?(\d{2,4})\s?-?(\d{2,4})$
+    Descripcion Paso A Paso:
+    # ^ = indica que va al incio de la cadena
+    # \+ = la contrabarra para verificar el '+' y no que sea una "función"
+    # ? = puedo aparecer 0 o 1 vez con el patron anterior.
+    # \d = digitos entre (0-9)
+    # {1,3} = entre 1 a 3 caracteres, para el código de area ingresado.
+    # ? = puedo aparecer 0 o 1 vez con el patron anterior.
+    # \s = "space" un carácter de espacio en blanco
+    # -? = puede aparecer 0 o 1 guion.
+    # (\d{2,4}) = de 2 a 4 digitos (0-9).
+    # \s?-? = repite lo anterior, espacio y guion posible
+    # (\d{2,4})\s?-?(\d{2,4}) = igualito
+    # $ = busca solo si termina con el patron anterior
+    """
+    patron = '^\+?(\d{1,3})?\s?-?(\d{2,4})\s?-?(\d{2,4})\s?-?(\d{2,4})$'
+    while not re.match(patron, tel):
+        print("No se encontro el número de teléfono")
+        tel = input("Marque nuevamente: ")
+    print("Teléfono encontrado")
+
+def val_cod_post(cod):
+    patron = '^([A-Za-z]\d{4}[A-Za-z]{3})' # En Arg.
+    while not re.match(patron, cod):
+        print("Código postal inválido")
+        cod = input("Reingrese un código postal: ")
+    print("Código postal válido")
+
+def val_fecha(date):
+    """Formato DD/MM/AAAA"""
+    patron = '^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(\d{1,4})$'
+    while not re.match(patron, date):
+        print("Fecha inválida")
+        date = input("Reingrese la fecha (DD/MM/AAAA): ")
+    print("Fecha válida")
+
+def val_user(usr):
+    patron = '^[a-zA-Z0-9._-]{3,16}$'
     pass
 
-def val_cod_post():
-    pass
-
-def val_fecha():
-    pass
+def __main__():
+    #email = val_email(input("Ingrese un Email: "))
+    #telefono = val_num_tel(input("Ingrese un número de teléfono a buscar: "))
+    #codPostal = val_cod_post(input("Ingrese un código postal: "))
+    fecha = val_fecha(input("Ingrese una fecha (DD/MM/AAAA): "))
+    #help(val_num_tel)
 
 #Programa Principal
-import re
-email = val_email(input("Ingrese un Email: "))
-"[a-z]" #El guion define un rango de caracteres
-"[0-9]"
+#"[a-z]" "[0-9]" El guion define un rango de caracteres
+__main__()
