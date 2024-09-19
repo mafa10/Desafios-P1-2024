@@ -11,7 +11,7 @@ libros = [
 #Recortar los titulos a un max de 15 caracteres.
 libros_recortados = [[str(id).zfill(4), titulo[:20].title(), anio, pag]for id, titulo, anio, pag in libros]
 
-#Ordenar la lista por año(más viejo)
+#Ordenar la lista por año (más viejo) y por mayor cantidad de páginas.
 libros_ordenados_anio = sorted(libros_recortados, key=lambda x: (x[2], -x[3]))
 
 #Imprimir los libros con f-strings
