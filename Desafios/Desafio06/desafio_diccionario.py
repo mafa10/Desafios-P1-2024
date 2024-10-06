@@ -6,7 +6,16 @@ from datetime import datetime
 
 """Atributos de Proyecto: uuid, nombre, uuid_equipo(asigando), created_at, end_date, deleted_at"""
 
-lista_dicc_proyectos = []
+lista_dicc_proyectos = [
+    {
+    'uuid_proyecto': 'b3a13c68-6c83-4e9f-bd84-53e84b7e1c18', 
+    'nombre_proyecto': 'Desarrollo Web',
+    'uuid_equipo_asignado': 'ad84bd39-22d8-4cb9-b95a-2a6a3d6e1334',
+    'created_at': '2024-10-05 12:34:56',
+    'end_date': '2025-12-31 23:59:59',
+    'deleted_at': None
+}
+]
 
 def generar_uuid():
     return str(uuid4())
@@ -34,15 +43,15 @@ def crear_proyecto():
     }
 
     lista_dicc_proyectos.append(proyecto)
-
+    print("Proyecto creado correctamente.")
     return proyecto
 
-def modificar_proyecto():
+def modificar_proyecto(uuid):
     pass
 
 def mostrar_proyectos(lista):
     print()
-    print("-"*30,"Proyectos","-"*30)
+    print(" Proyectos ".center(70, "-"))
     for indice, proyecto in enumerate(lista, start = 1):
         print()
         print(f"Proyecto {indice}:")
@@ -51,19 +60,45 @@ def mostrar_proyectos(lista):
         print(f"  UUID del Equipo Asignado: {proyecto['uuid_equipo_asignado']}")
         print(f"  Fecha de Creación: {proyecto['created_at']}")
         print(f"  Fecha de Finalización: {proyecto['end_date']}")
-        print(f"  Fecha de Eliminación: {proyecto['deleted_at'] if proyecto['deleted_at'] else 'No eliminado'}")
-        print("-" * 72)
+        print(f"  Fecha de Eliminación: {proyecto['deleted_at'] if proyecto['deleted_at'] else 'No Eliminado'}")
+        print()
+        print("-" * 70)
     
-
 def eliminar_proyecto():
     pass
 
 def obtener_equipos():
-    #crear equipos hardcodeados para asiganr a proyectos
+    #crear equipos hardcodeados para asignar a proyectos
     pass
+
+def mostrar_menu():
+    print(" Menu ".center(70,"-"))
+    print("1. Crear Proyecto")
+    print("2. Mostrar Proyectos")
+    print("3. Modificar Proyecto")
+    print("4. Eliminar Proyecto")
+    print("5. Salir")
+    print("-" * 70)
 
 def menu():
-    pass
+    while True:
+        mostrar_menu()
+        opcion = input("Ingrese una opción:")
 
-crear_proyecto()
-mostrar_proyectos(lista_dicc_proyectos)
+        if opcion == '1':
+            crear_proyecto()
+        elif opcion == '2':
+            mostrar_proyectos(lista_dicc_proyectos)
+        elif opcion == '3':
+            id = input("Ingrese el UUID del proyecto a modificar:")
+            modificar_proyecto(id)
+        elif opcion == '4':
+            id = input("Ingrese el UUID del proyecto a eliminar:")
+            eliminar_proyecto(id)
+        elif opcion == '5':
+            print("Saliendo del programa.")
+            break
+        else:
+            print("Opción no válida. Intente de nuevo.")
+
+menu()
