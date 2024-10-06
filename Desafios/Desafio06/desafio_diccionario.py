@@ -4,7 +4,7 @@
 from uuid import uuid4
 from datetime import datetime
 
-"""Atributos de Proyecto: uuid, nombre, uuid_equipo(asigando), created_at, end_date, deleted_at"""
+"""Atributos de Proyecto: uuid, nombre, uuid_equipo(asignado), created_at, end_date, deleted_at"""
 
 lista_dicc_proyectos = [
     {
@@ -64,11 +64,22 @@ def mostrar_proyectos(lista):
         print()
         print("-" * 70)
     
-def eliminar_proyecto():
-    pass
-
-def obtener_equipos():
-    #crear equipos hardcodeados para asignar a proyectos
+def eliminar_proyecto(uuid_proyecto_eliminar):
+    proyecto_encontrado = None
+    for proyecto in lista_dicc_proyectos:
+        if proyecto["uuid_proyecto"] == uuid_proyecto_eliminar:
+            proyecto_encontrado = proyecto
+    
+    if proyecto_encontrado:
+        nombre_proyecto = proyecto_encontrado["nombre_proyecto"]
+        verificacion = input(f"Seguro que quiere eliminar el proyecto {nombre_proyecto} con UUID:{uuid_proyecto_eliminar}?(s/n):")
+        if verificacion.lower() == "s":
+            lista_dicc_proyectos.remove(proyecto_encontrado)
+            print(f"El Proyecto '{nombre_proyecto}' ha sido eliminado")
+        else:
+            print("Volviendo...")
+    else:
+        print(f"No se encontró el proyecto")
     pass
 
 def mostrar_menu():
