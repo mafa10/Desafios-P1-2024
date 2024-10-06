@@ -26,7 +26,7 @@ def crear_proyecto():
     """Se le pide ingresar los datos del proyecto y devuelve un dicc 'proyecto' """
     uuid_proyecto = generar_uuid()
     created_at = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-    uuid_equipo_asignado = obtener_equipos() # revisar, que solo traiga el uuid equipo
+    #uuid_equipo_asignado = obtener_equipos() # revisar, que solo traiga el uuid equipo
 
     nombre_proyecto = input("Ingrese el nombre del proyecto:") # validar campo
     end_date = input("Ingrese fecha de finalización del proyecto (dd-mm-yyyy):") # validar con datetime
@@ -36,7 +36,7 @@ def crear_proyecto():
     proyecto = {
         "uuid_proyecto": uuid_proyecto,
         "nombre_proyecto": nombre_proyecto,
-        "uuid_equipo_asignado": uuid_equipo_asignado,
+       # "uuid_equipo_asignado": uuid_equipo_asignado,
         "created_at": created_at,
         "end_date": end_date,
         "deleted_at": deleted_at
